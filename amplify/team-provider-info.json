@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-myant-dev-105444-authRole",
+      "UnauthRoleArn": "arn:aws:iam::157356677452:role/amplify-myant-dev-105444-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::157356677452:role/amplify-myant-dev-105444-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-myant-dev-105444-deployment",
+      "UnauthRoleName": "amplify-myant-dev-105444-unauthRole",
+      "StackName": "amplify-myant-dev-105444",
+      "StackId": "arn:aws:cloudformation:us-east-1:157356677452:stack/amplify-myant-dev-105444/dce77e20-cd80-11ed-9c4f-0e8103aca643",
+      "AmplifyAppId": "d2zn2fytvq0y51"
+    },
+    "categories": {
+      "auth": {
+        "myant88d0fa81": {}
+      }
+    }
+  }
+}

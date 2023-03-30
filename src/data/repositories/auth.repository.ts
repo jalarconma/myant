@@ -7,7 +7,6 @@ export class AuthRepositoryImpl implements AuthRepository {
   constructor(
     private readonly dataSourceCognito: AuthDataSource,
   ) {
-    this.dataSourceCognito = new AuthDataSourceCognito();
   }
 
   async isAuthenticated(): Promise<boolean> {

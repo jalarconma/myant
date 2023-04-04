@@ -15,7 +15,8 @@ export class AuthDataSourceCognito implements AuthDataSource {
   }
 
   async googleLogin(): Promise<void> {
-    await Auth.federatedSignIn({provider: CognitoHostedUIIdentityProvider.Google });
+    const data = await Auth.federatedSignIn({provider: CognitoHostedUIIdentityProvider.Google });
+    console.log(data);
   }
 
   async logout(): Promise<void> {

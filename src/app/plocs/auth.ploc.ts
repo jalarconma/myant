@@ -15,7 +15,7 @@ function useAuthPloc() {
   }, []);
 
   const isAuthenticated = useCallback(async () => {
-    await authUseCase.isAuthenticated()
+    return await authUseCase.isAuthenticated()
     //dispatch(getAuthenticated())
   }, []);
 

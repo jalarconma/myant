@@ -9,11 +9,18 @@ import { useEffect } from 'react';
 
 function Layout() {
   const element = useRoutes(routes);
-  const { googleLogin } = useAuthPloc();
+  const { isAuthenticated, googleLogin } = useAuthPloc();
 
   useEffect(() => {
-    googleLogin();
+    authFlow();
   }, []);
+
+  const authFlow = async () => {
+    const isAuth = await isAuthenticated();
+    if (!isAuth) {
+      googleLogin();
+    }
+  }
   
   return (
     <div className={styles['layout']}>

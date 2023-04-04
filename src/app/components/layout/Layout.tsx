@@ -4,9 +4,17 @@ import { useRoutes } from 'react-router-dom';
 
 import routes from '../../AppRoutes';
 import styles from './Layout.module.scss';
+import useAuthPloc from '../../plocs/auth.ploc';
+import { useEffect } from 'react';
 
 function Layout() {
   const element = useRoutes(routes);
+  const { googleLogin } = useAuthPloc();
+
+  useEffect(() => {
+    googleLogin();
+  }, []);
+  
   return (
     <div className={styles['layout']}>
       <Header />

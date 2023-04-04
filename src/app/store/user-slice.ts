@@ -22,12 +22,16 @@ const initialState: UserState = {
   errorMsg: ''
 }
 
-export const counterSlice = createSlice({
+export const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {},
+  reducers: {
+    setUser(state, { payload }) {
+      state.data = payload;
+    }
+  },
 })
 
-//export const { increment, decrement, incrementByAmount } = counterSlice.actions
+export const { setUser } = userSlice.actions
 
-export default counterSlice.reducer
+export default userSlice.reducer

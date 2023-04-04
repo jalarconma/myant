@@ -1,4 +1,6 @@
-export class UserUserCases {
+import { User } from "../models/User";
+
+export class UserUseCases {
   constructor(
     private readonly userRepository: UserRepository,
     private readonly userMapper: UserMapper,

@@ -11,18 +11,7 @@ interface ProviderValue {
   setValue: React.Dispatch<React.SetStateAction<AuthUseCases>>
 }
 
-const initialValue: AuthUseCases = {
-  authRepository: undefined,
-  isAuthenticated: function (): Promise<boolean> {
-    throw new Error("Function not implemented.");
-  },
-  googleLogin: function (): Promise<void> {
-    throw new Error("Function not implemented.");
-  },
-  logout: function (): Promise<void> {
-    throw new Error("Function not implemented.");
-  }
-}
+const initialValue: AuthUseCases = AuthServiceLocator.getInstance().getAuthUseCase();
 
 export const AuthContext = createContext<ProviderValue>({
   value: initialValue,

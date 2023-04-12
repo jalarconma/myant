@@ -2,13 +2,13 @@ import Header from '../header/Header';
 import Footer from '../footer/Footer';
 import { useRoutes } from 'react-router-dom';
 
-import routes from '../../AppRoutes';
+import { publicRoutes, privateRoutes } from '../../AppRoutes';
 import styles from './Layout.module.scss';
 import useAuthPloc from '../../plocs/auth.ploc';
 import { useEffect } from 'react';
 
 function Layout() {
-  const element = useRoutes(routes);
+  const element = useRoutes(publicRoutes);
   const { isAuthenticated, googleLogin } = useAuthPloc();
 
   useEffect(() => {

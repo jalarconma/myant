@@ -1,0 +1,46 @@
+.header {
+  background-color: theme('colors.orange.600');
+
+  .header__links {
+    padding: theme('spacing.4');
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .header__logo {
+      display: flex;
+      align-items: center;
+      color: theme('colors.white');
+    }
+
+    .header__toggle__wrapper {
+      padding: theme('spacing.2');
+      color: theme('colors.white');
+
+      @media (min-width: theme("screens.md")) {
+        display: none;
+      }
+
+      .header__toggle__icon {
+        width: theme('spacing.36');
+        height: theme('spacing.36');
+        max-width: theme('spacing.36');
+        max-height: theme('spacing.36');
+      }
+    }
+
+    .header__menu {
+      display: none;
+      color: theme('colors.white');
+
+      @media (min-width: theme("screens.md")) {
+        display: flex;
+        align-items: center;
+      }
+
+      .header__item {
+        padding: theme('spacing.2');
+      }
+    }
+  }
+}

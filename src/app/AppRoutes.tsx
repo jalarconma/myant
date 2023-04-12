@@ -1,11 +1,23 @@
 import { RouteObject } from 'react-router-dom';
-import Home from './components/home/Home';
 
-const routes: RouteObject[] = [
+import WelcomePage from './pages/welcome/Welcome.page';
+import SignOutPage from './pages/sign-out/SignOut.page';
+import HomePage from './pages/home/Home.page';
+
+export const privateRoutes: RouteObject[] = [
   {
     path: '/',
-    element: <Home />
+    element: <HomePage />
   },
 ];
 
-export default routes;
+export const publicRoutes: RouteObject[] = [
+  {
+    path: '/welcome',
+    element: <WelcomePage />
+  },
+  {
+    path: '/sign-out',
+    element: <SignOutPage />
+  },
+];

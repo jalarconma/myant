@@ -1,23 +1,25 @@
-import { RouteObject } from 'react-router-dom';
-
 import WelcomePage from './pages/welcome/Welcome.page';
 import SignOutPage from './pages/sign-out/SignOut.page';
 import HomePage from './pages/home/Home.page';
+import { RouteObjectExt } from './models/RouteObjectExt';
 
-export const privateRoutes: RouteObject[] = [
+export const privateRoutes: RouteObjectExt[] = [
   {
-    path: '/',
-    element: <HomePage />
+    path: '/home',
+    element: <HomePage />,
+    linkName: 'Home'
   },
 ];
 
-export const publicRoutes: RouteObject[] = [
+export const publicRoutes: RouteObjectExt[] = [
   {
     path: '/welcome',
-    element: <WelcomePage />
+    element: <WelcomePage />,
+    linkName: 'Welcome'
   },
   {
     path: '/sign-out',
-    element: <SignOutPage />
+    element: <SignOutPage />,
+    linkName: 'Sign Out'
   },
 ];

@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 
 function Layout() {
   const element = useRoutes(publicRoutes);
-  const { isAuthenticated, googleLogin } = useAuthPloc();
+  const { isAuthenticated, googleLogin, getAuthenticatedUser } = useAuthPloc();
 
   useEffect(() => {
     authFlow();
@@ -19,6 +19,8 @@ function Layout() {
     const isAuth = await isAuthenticated();
     if (!isAuth) {
       googleLogin();
+    } else {
+      await getAuthenticatedUser();
     }
   }
   

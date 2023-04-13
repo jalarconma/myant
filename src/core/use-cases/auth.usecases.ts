@@ -1,3 +1,4 @@
+import { User } from "../models/User";
 import { AuthRepository } from "../repositories/auth.repository";
 
 export class AuthUseCases {
@@ -8,6 +9,11 @@ export class AuthUseCases {
   async isAuthenticated(): Promise<boolean> {
     const auth = await this.authRepository.isAuthenticated();
     return auth;
+  }
+
+  async getAuthenticatedUser(): Promise<User | undefined> {
+    const user = await this.authRepository.getAuthenticatedUser();
+    return user;
   }
 
   async googleLogin(): Promise<void> {

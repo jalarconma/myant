@@ -11,19 +11,23 @@ function useAuthPloc() {
 
   const googleLogin = useCallback(async () => {
     await authUseCase.googleLogin();
-    dispatch(setUser({ name: 'test', email: 'test@test.com'}));
   }, []);
 
   const isAuthenticated = useCallback(async () => {
-    return await authUseCase.isAuthenticated()
-    //dispatch(getAuthenticated())
+    return await authUseCase.isAuthenticated();
+  }, []);
+
+  const getAuthenticatedUser = useCallback(async () => {
+    const user = await authUseCase.getAuthenticatedUser();
+    dispatch(setUser(user));
+    return user;
   }, []);
 
   const logout = useCallback(() => {
     dispatch(setUser(null));
   }, []);
 
-  return { user, isAuthenticated, googleLogin, logout };
+  return { user, isAuthenticated, googleLogin, logout, getAuthenticatedUser };
 }
 
 export default useAuthPloc;

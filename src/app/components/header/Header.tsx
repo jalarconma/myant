@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { ReactComponent as HamburgerIcon } from '../../../assets/icons/hamburger-menu.svg';
 
@@ -6,10 +6,13 @@ import styles from './Header.module.scss';
 import useAuthPloc from '../../plocs/auth.ploc';
 import { privateRoutes } from '../../AppRoutes';
 import { Link } from 'react-router-dom';
+import useWindowResize from '../../hooks/use-window-resize';
 
 function Header() {
   const { user } = useAuthPloc();
   const [showMenu, setShowMenu] = useState(false);
+  const { breakpointsWithDimensions: breakpoints, dimensions } = useWindowResize();
+  const moreThanMd = dimensions.width > breakpoints.md;
   const routes = user ? [...privateRoutes] : null;
 
   const NavigationLogo = () => {
@@ -23,6 +26,10 @@ function Header() {
   const onToggleMenu = () => {
     setShowMenu(prev => !prev);
   }
+
+  useEffect(() => {
+    moreThanMd ? setShowMenu(true) : setShowMenu(false);
+  }, [moreThanMd])
 
   return (
     <header className={styles['header']}>

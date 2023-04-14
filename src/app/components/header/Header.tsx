@@ -7,6 +7,7 @@ import useAuthPloc from '../../plocs/auth.ploc';
 import { privateRoutes } from '../../AppRoutes';
 import { Link } from 'react-router-dom';
 import useWindowResize from '../../hooks/use-window-resize';
+import UserMenu from '../user-menu/UserMenu';
 
 function Header() {
   const { user } = useAuthPloc();
@@ -41,6 +42,7 @@ function Header() {
           <button className={styles['header__toggle__wrapper']} type="button" onClick={onToggleMenu}>
             <HamburgerIcon className={styles['header__toggle__icon']} />
           </button>
+          <UserMenu />
         </div>
         {showMenu && (
           <ul className={styles['header__menu']}>

@@ -3,11 +3,13 @@ import { useEffect } from "react";
 import useAuthPloc from "../../plocs/auth.ploc";
 
 function SignOutPage() {
-  const { logout } = useAuthPloc();
+  const { user, logout } = useAuthPloc();
 
   useEffect(() => {
-    logout();
-  }, [logout]);
+    if(user) {
+      logout();
+    }
+  }, [user, logout]);
 
   return (
     <div>

@@ -5,11 +5,12 @@ import { useRoutes } from 'react-router-dom';
 import { publicRoutes, privateRoutes } from '../../AppRoutes';
 import styles from './Layout.module.scss';
 import useAuthPloc from '../../plocs/auth.ploc';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 function Layout() {
   const element = useRoutes(publicRoutes);
-  const { isAuthenticated, googleLogin, getAuthenticatedUser } = useAuthPloc();
+  const [pagesRoutes, setPagesRoutes] = useState(element);
+  const { isAuthenticated, getAuthenticatedUser } = useAuthPloc();
 
   useEffect(() => {
     authFlow();
@@ -17,10 +18,9 @@ function Layout() {
 
   const authFlow = async () => {
     const isAuth = await isAuthenticated();
-    if (!isAuth) {
-      googleLogin();
-    } else {
+    if (isAuth) {
       await getAuthenticatedUser();
+      //element = useRoutes(privateRoutes); TODO generate the element dinamically
     }
   }
   

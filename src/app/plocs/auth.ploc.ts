@@ -23,8 +23,9 @@ function useAuthPloc() {
     return user;
   }, []);
 
-  const logout = useCallback(() => {
+  const logout = useCallback(async () => {
     dispatch(setUser(null));
+    await authUseCase.logout();
   }, []);
 
   return { user, isAuthenticated, googleLogin, logout, getAuthenticatedUser };

@@ -21,19 +21,24 @@
         display: flex;
         align-items: center;
       }
-  
-      .header__toggle__wrapper {
-        padding: theme('spacing.2');
 
-        @media (min-width: theme("screens.md")) {
-          display: none;
-        }
+      .header__menu_btn_wrapper {
+        display: flex;
+        align-items: center;
+
+        .header__toggle__wrapper {
+          padding: theme('spacing.2');
   
-        .header__toggle__icon {
-          width: theme('spacing.36');
-          height: theme('spacing.36');
-          max-width: theme('spacing.36');
-          max-height: theme('spacing.36');
+          @media (min-width: theme("screens.md")) {
+            display: none;
+          }
+    
+          .header__toggle__icon {
+            width: theme('spacing.36');
+            height: theme('spacing.36');
+            max-width: theme('spacing.36');
+            max-height: theme('spacing.36');
+          }
         }
       }
     }

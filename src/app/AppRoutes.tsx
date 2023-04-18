@@ -1,8 +1,10 @@
+import { Navigate } from 'react-router-dom';
+
+import { RouteObjectExt } from './models/RouteObjectExt';
 import WelcomePage from './pages/welcome/Welcome.page';
 import SignOutPage from './pages/sign-out/SignOut.page';
 import HomePage from './pages/home/Home.page';
-import { RouteObjectExt } from './models/RouteObjectExt';
-import { Navigate } from 'react-router-dom';
+import NotFoundPage from './pages/not-found/NotFound.page';
 
 export const privateRoutes: RouteObjectExt[] = [
   {
@@ -20,6 +22,11 @@ export const privateRoutes: RouteObjectExt[] = [
     element: <SignOutPage />,
     linkName: 'Sign Out'
   },
+  {
+    path: '*',
+    element: <NotFoundPage />,
+    linkName: 'Not Found'
+  }
 ];
 
 export const publicRoutes: RouteObjectExt[] = [
@@ -38,4 +45,9 @@ export const publicRoutes: RouteObjectExt[] = [
     element: <SignOutPage />,
     linkName: 'Sign Out'
   },
+  {
+    path: '*',
+    element: <NotFoundPage />,
+    linkName: 'Not Found'
+  }
 ];

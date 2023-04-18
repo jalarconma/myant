@@ -9,8 +9,8 @@ function useAuthPloc() {
   const user = useSelector((store: RootState) => store.user.data);
   const { value: authUseCase } = useAuthContext();
 
-  const googleLogin = useCallback(async () => {
-    await authUseCase.googleLogin();
+  const googleLogin = useCallback(() => {
+    authUseCase.googleLogin();
   }, []);
 
   const isAuthenticated = useCallback(async () => {
@@ -18,9 +18,9 @@ function useAuthPloc() {
   }, []);
 
   const getAuthenticatedUser = useCallback(async () => {
-    const user = await authUseCase.getAuthenticatedUser();
-    dispatch(setUser(user));
-    return user;
+    const currentUser = await authUseCase.getAuthenticatedUser();
+    dispatch(setUser(currentUser));
+    return currentUser;
   }, []);
 
   const logout = useCallback(async () => {

@@ -17,7 +17,7 @@ function Header() {
   const routes = user ? [...privateRoutes] : null;
 
   const NavigationLogo = () => {
-    const navRoute = user ? '/home' : '/welcome';
+    const navRoute = '/';
 
     return (
       <Link to={navRoute}><span><i></i>MyAnt</span></Link>

@@ -1,28 +1,26 @@
+import { useEffect } from 'react';
+import { useNavigate, useRoutes } from 'react-router-dom';
+
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
-import { useRoutes } from 'react-router-dom';
 
 import { publicRoutes, privateRoutes } from '../../AppRoutes';
 import styles from './Layout.module.scss';
 import useAuthPloc from '../../plocs/auth.ploc';
-import { useEffect, useState } from 'react';
+
 
 function Layout() {
-  const element = useRoutes(publicRoutes);
-  const [pagesRoutes, setPagesRoutes] = useState(element);
-  const { isAuthenticated, getAuthenticatedUser } = useAuthPloc();
+  const { user, getAuthenticatedUser } = useAuthPloc();
+  const element = useRoutes(user ? privateRoutes : publicRoutes);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    authFlow();
+    getAuthenticatedUser();
   }, []);
 
-  const authFlow = async () => {
-    const isAuth = await isAuthenticated();
-    if (isAuth) {
-      await getAuthenticatedUser();
-      //element = useRoutes(privateRoutes); TODO generate the element dinamically
-    }
-  }
+  useEffect(() => {
+    navigate('/');
+  }, [user]);
   
   return (
     <div className={styles['layout']}>

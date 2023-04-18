@@ -8,7 +8,13 @@ import { User } from '../../../core/models/User';
 export class AuthDataSourceCognito implements AuthDataSource {
 
   async getAuthenticatedUser(): Promise<User | undefined> {
-    const cognitoUser = await Auth.currentAuthenticatedUser();
+    let cognitoUser;
+    
+    try {
+      cognitoUser = await Auth.currentAuthenticatedUser();
+    } catch (error) {
+      cognitoUser = undefined;
+    }
 
     if (_.isEmpty(cognitoUser) || _.isEmpty(cognitoUser.attributes)) {
       return undefined;

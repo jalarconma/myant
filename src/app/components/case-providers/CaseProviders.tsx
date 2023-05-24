@@ -1,4 +1,6 @@
+import { AccountContextProvider } from "../../context/account.context";
 import { AuthContextProvider } from "../../context/auth.context";
+import { RegisterContextProvider } from "../../context/register.context";
 
 interface Props {
   children: React.ReactNode
@@ -6,7 +8,11 @@ interface Props {
 function CaseProviders({ children }: Props) {
   return (
     <AuthContextProvider>
-      {children}
+      <RegisterContextProvider>
+        <AccountContextProvider>
+          {children}
+        </AccountContextProvider>
+      </RegisterContextProvider>
     </AuthContextProvider>
   )
 }

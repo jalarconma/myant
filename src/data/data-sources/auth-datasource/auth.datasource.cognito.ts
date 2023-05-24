@@ -11,7 +11,9 @@ export class AuthDataSourceCognito implements AuthDataSource {
     let cognitoUser;
     
     try {
+      const jwtToken = (await Auth.currentSession()).getAccessToken().getJwtToken();
       cognitoUser = await Auth.currentAuthenticatedUser();
+      console.log(jwtToken);
     } catch (error) {
       cognitoUser = undefined;
     }

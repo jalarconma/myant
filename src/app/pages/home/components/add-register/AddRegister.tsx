@@ -1,11 +1,16 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { AddRegisterModel } from '../../models/AddRegister.model';
+import { AddRegisterModel } from '../../models/add-register.model';
+import useRegisterPloc from '../../../../plocs/register.ploc';
+import useAccountPloc from '../../../../plocs/account.ploc';
 
 function AddRegister() {
   const { register, handleSubmit, formState: { errors } } = useForm<AddRegisterModel>();
   const onSubmit = (data: AddRegisterModel) => console.log(data);
   console.log(errors);
+
+  const { getRegisters } = useRegisterPloc()
+  const { getAccounts } = useAccountPloc();
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

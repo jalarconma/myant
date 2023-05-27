@@ -2,17 +2,15 @@
   position: relative;
   z-index: 0;
 
-  &:focus-within + label.form-control-text,
-  > .form-control:not(:placeholder-shown) + .form-control-text,
-  > .form-control:not(:placeholder-shown):focus + label.form-control-text,
-  > .form-control:not(:placeholder-shown):not(:empty) + label.form-control-text {
-    z-index: theme('zIndex.10');
-    @apply left-0 text-primary-40 scale-75 -translate-y-6;
-  }
+  &:focus-within ,
+  > .form-control:not(:placeholder-shown),
+  > .form-control:not(:placeholder-shown):focus,
+  > .form-control:not(:placeholder-shown):not(:empty) {
 
-  > .form-control:not(:placeholder-shown) {
-    min-height: theme('spacing.40');
-    font-size: theme('fontSize.base');
+    + .form-control-text {
+      z-index: theme('zIndex.10');
+      @apply left-0 text-primary-40 scale-75 -translate-y-6;
+    }
   }
 
   .form-control {
@@ -28,20 +26,16 @@
     border-style: solid;
     appearance: none;
 
-    &:focus {
+    &:not(:placeholder-shown) {
+      min-height: theme('spacing.40');
+      font-size: theme('fontSize.base');
+    }
+
+    &:focus,
+    &:not(:placeholder-shown) {
       outline: none;
       border-color: $color-primary;
     }
-
-    // &:not(:placeholder-shown) {
-    //   min-height: theme('spacing.40');
-    //   font-size: theme('fontSize.base');
-
-    //   + .form-control-text {
-    //     z-index: theme('zIndex.10');
-    //     @apply left-0 text-primary-40 scale-75 -translate-y-8;
-    //   }
-    // }
   }
 
   .form-control-text {

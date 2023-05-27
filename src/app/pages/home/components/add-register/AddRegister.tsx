@@ -15,7 +15,7 @@ function AddRegister() {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="input-group">
-        <input type="text" className="form-control" placeholder="Description" {...register("description", { required: true, maxLength: 100 })} />
+        <input type="text" className="form-control" placeholder="Description" autoComplete="off" {...register("description", { required: true, maxLength: 100 })} />
         <label className="form-control-text" >Description</label>
       </div>
 
